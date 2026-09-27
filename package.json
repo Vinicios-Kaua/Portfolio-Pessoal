@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-vinicios-kaua",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Portfólio profissional e currículo de Vinicios Kauã — site estático (HTML, CSS, JS puro).",
+  "scripts": {
+    "start": "http-server . -p 5500 -o -c-1",
+    "dev": "http-server . -p 5500 -o -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

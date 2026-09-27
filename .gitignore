@@ -1,0 +1,10 @@
+# Dependências (apenas para servir localmente — não precisa no deploy)
+node_modules/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.log

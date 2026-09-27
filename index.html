@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinicios Kauã — Portfólio & Currículo</title>
+  <meta name="description" content="Portfólio profissional de Vinicios Kauã — desenvolvedor full stack e técnico de suporte de TI. Projetos, habilidades e experiência." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vinicios Kauã — Portfólio & Currículo" />
+  <meta property="og:description" content="Desenvolvedor full stack e técnico de suporte de TI. Confira projetos, habilidades e experiência." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/profile/foto-perfil.jpeg" />
+
+  <link rel="icon" id="favicon-link" type="image/svg+xml" href="assets/images/logo/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark" aria-hidden="true"><img id="brand-logo-header" src="" alt="" /></span>
+        <span class="js-brand-full"></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul class="nav-list" id="nav-list"></ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu">
+        <span></span>
+       </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MENU MOBILE ================= -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
+    <ul id="mobile-nav-list"></ul>
+    <a href="#contato" class="btn btn-primary">Entre em contato</a>
+  </nav>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-eyebrow" id="hero-eyebrow"></p>
+          <h1 class="hero-title" id="hero-title"></h1>
+          <p class="hero-text" id="hero-text"></p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary" id="hero-cta-primary"></a>
+            <a href="#" class="btn btn-ghost" id="hero-cta-secondary" download></a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo-ring" aria-hidden="true"></div>
+          <div class="hero-photo-frame">
+            <img id="hero-photo" src="" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-cue" aria-hidden="true">
+        <span>Role para explorar</span>
+        <span class="cue-line"></span>
+      </div>
+    </section>
+
+    <!-- ================= SOBRE ================= -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="section-kicker">Sobre mim</p>
+            <h2 class="section-title">Quem está por trás do código</h2>
+            <div id="about-paragraphs"></div>
+          </div>
+          <div class="about-stats" id="about-stats"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HABILIDADES ================= -->
+    <section class="section" id="habilidades">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Stack</p>
+          <h2 class="section-title">Habilidades & Tecnologias</h2>
+          <p class="section-desc">Ferramentas que uso no dia a dia para desenvolver, sustentar e dar suporte a sistemas.</p>
+        </div>
+        <div class="skills-grid" id="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- ================= CERTIFICAÇÕES ================= -->
+    <section class="section" id="certificacoes">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Credenciais</p>
+          <h2 class="section-title">Certificações</h2>
+          <p class="section-desc">Formação técnica complementar em tecnologia, infraestrutura e ferramentas de produtividade.</p>
+        </div>
+        <div class="cert-grid" id="cert-grid"></div>
+      </div>
+    </section>
+
+    <!-- ================= PROJETOS ================= -->
+    <section class="section" id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Trabalhos</p>
+          <h2 class="section-title">Projetos</h2>
+          <p class="section-desc">Sistemas próprios, do problema real à solução em produção. Use as setas para navegar.</p>
+        </div>
+
+        <div class="projects-stage">
+          <div class="ring-viewport" id="ring-viewport" tabindex="0" aria-label="Carrossel de projetos, use as setas do teclado para navegar">
+            <div class="ring-track" id="ring-track"></div>
+          </div>
+
+          <div class="ring-nav">
+            <button class="ring-arrow" id="ring-prev" aria-label="Projeto anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="ring-dots" id="ring-dots"></div>
+            <button class="ring-arrow" id="ring-next" aria-label="Próximo projeto">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <p class="ring-cta">Clique no projeto em destaque para ver o case completo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIÊNCIA & FORMAÇÃO (resumo compacto) ================= -->
+    <section class="section section--compact" id="experiencia">
+      <div class="container">
+        <div class="compact-panel">
+          <div class="compact-panel-head">
+            <p class="section-kicker">Trajetória</p>
+            <h2 class="section-title compact-title">Experiência & Formação</h2>
+            <p class="section-desc">Histórico completo de cargos e formação no currículo e no LinkedIn — aqui vai um resumo.</p>
+            <a href="assets/cv/curriculo-vinicios-kaua.pdf" class="btn btn-ghost btn-sm" download>Baixar currículo completo</a>
+          </div>
+
+          <div class="compact-panel-grid">
+            <div>
+              <h3 class="timeline-sub">Experiência profissional</h3>
+              <ul class="compact-list" id="experience-list"></ul>
+            </div>
+            <div>
+              <h3 class="timeline-sub">Formação acadêmica</h3>
+              <ul class="compact-list" id="education-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTATO ================= -->
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <p class="section-kicker">Contato</p>
+            <h2 class="section-title" id="contact-title"></h2>
+            <p class="section-desc" id="contact-subtitle"></p>
+
+            <ul class="contact-list" style="margin-top: 2rem;">
+              <li class="contact-row">
+                <span class="contact-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+                </span>
+                <span>
+                  <span class="label">E-mail</span>
+                  <a href="#" id="contact-email"></a>
+                </span>
+              </li>
+              <li class="contact-row">
+                <span class="contact-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.58 2.34.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span>
+                  <span class="label">WhatsApp</span>
+                  <a href="#" id="contact-phone"></a>
+                </span>
+              </li>
+              <li class="contact-row">
+                <span class="contact-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span>
+                  <span class="label">Localização</span>
+                  <span class="value" id="contact-location"></span>
+                </span>
+              </li>
+              <li class="contact-row">
+                <span class="contact-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </span>
+                <span>
+                  <span class="label">GitHub</span>
+                  <a href="https://github.com/Vinicios-Kaua" id="contact-github" target="_blank" rel="noopener">Vinicios-Kaua</a>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-actions">
+            <a href="#" class="btn btn-primary" id="contact-whatsapp-btn" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+            <a href="#" class="btn btn-ghost" id="contact-linkedin" target="_blank" rel="noopener">Ver LinkedIn</a>
+            <a href="assets/cv/curriculo-vinicios-kaua.pdf" class="btn btn-ghost" download>Baixar currículo em PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true"><img id="brand-logo-footer" src="" alt="" /></span>
+          <span class="js-brand-full"></span>
+        </div>
+        <nav class="footer-links" id="footer-links" aria-label="Links do rodapé"></nav>
+        <div class="footer-social">
+          <a href="#" id="footer-github" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" id="footer-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year"></span> Vinicios Kauã. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL DE DETALHES DO PROJETO ================= -->
+  <div class="project-modal" id="project-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+    <div class="project-modal-backdrop"></div>
+    <div class="project-modal-panel">
+      <button class="modal-close" aria-label="Fechar detalhes do projeto">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+
+      <p class="modal-category" id="modal-category"></p>
+      <h3 class="modal-title" id="modal-title"></h3>
+
+      <div class="modal-block">
+        <div class="gallery-main" id="gallery-main"></div>
+        <div class="gallery-controls" style="display:flex; justify-content:flex-end; gap:.5rem; margin-bottom: .8rem;">
+          <button class="ring-arrow" id="gallery-prev" aria-label="Imagem anterior" style="width:38px;height:38px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="ring-arrow" id="gallery-next" aria-label="Próxima imagem" style="width:38px;height:38px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+      </div>
+
+      <div class="modal-block">
+        <h4>O problema</h4>
+        <p id="modal-challenge"></p>
+      </div>
+
+      <div class="modal-block">
+        <h4>A solução</h4>
+        <p id="modal-solution"></p>
+      </div>
+
+      <div class="modal-block">
+        <h4>Principais funcionalidades</h4>
+        <ul class="modal-features" id="modal-features"></ul>
+      </div>
+
+      <div class="modal-block">
+        <h4>Tecnologias</h4>
+        <div class="ring-card-tech" id="modal-tech"></div>
+      </div>
+
+      <div class="modal-block" style="margin-bottom:0;">
+        <h4>Informações</h4>
+        <div class="modal-info-grid" id="modal-info-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

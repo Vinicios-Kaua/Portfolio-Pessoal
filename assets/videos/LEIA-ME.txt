@@ -1,0 +1,1 @@
+Coloque aqui os vídeos de capa (.webm/.mp4) de projetos em desenvolvimento, em uma subpasta por projeto (ex.: assets/videos/nome-do-projeto/capa.webm).
