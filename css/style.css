@@ -888,3 +888,88 @@ h1, h2, h3, h4 {
 @media (max-width: 380px) {
   .ring-card { width: 250px; }
 }
+
+/* =========================================================
+   MOBILE — Experiência & Formação em formato de linha do tempo
+   (só até 700px; o layout do desktop não muda)
+========================================================= */
+@media (max-width: 700px) {
+  .section--compact { padding-block: var(--space-3); }
+
+  .compact-panel {
+    padding: 1.4rem 1.15rem;
+    border-radius: var(--radius-m);
+  }
+  .compact-panel-head { margin-bottom: var(--space-2); }
+  .compact-title { font-size: 1.35rem; }
+  .compact-panel-head .section-desc { font-size: 0.95rem; }
+  .compact-panel-head .btn { width: 100%; justify-content: center; }
+
+  /* duas colunas viram dois blocos bem separados */
+  .compact-panel-grid {
+    gap: 0;
+    padding-top: var(--space-3);
+  }
+  .compact-panel-grid > div + div {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--line);
+  }
+  .timeline-sub {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: var(--space-3);
+  }
+
+  /* linha do tempo vertical */
+  .compact-list {
+    position: relative;
+    gap: 1.5rem;
+    padding-left: 1.35rem;
+  }
+  .compact-list::before {
+    content: "";
+    position: absolute;
+    left: 4px; top: 0.5rem; bottom: 0.5rem;
+    width: 1px;
+    background: var(--line-strong);
+  }
+  .compact-item {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .compact-item::before {                 /* marcador */
+    content: "";
+    position: absolute;
+    left: calc(-1.35rem + 0.5px);
+    top: 0.3rem;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg-0, #0b0d12);
+    border: 1px solid var(--accent-1);
+  }
+  .compact-list .compact-item:first-child::before {   /* item atual em destaque */
+    background: var(--accent-grad);
+    border-color: transparent;
+    box-shadow: 0 0 0 4px rgba(91, 141, 239, 0.15);
+  }
+
+  /* período vira uma etiqueta acima do cargo */
+  .compact-item-period {
+    order: -1;
+    font-size: 0.72rem;
+    padding: 0.18rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-grad-soft, rgba(91, 141, 239, 0.12));
+    border: 1px solid var(--line);
+  }
+  .compact-item-main { font-size: 1rem; line-height: 1.35; }
+  .compact-item-place { font-size: 0.86rem; }
+}
