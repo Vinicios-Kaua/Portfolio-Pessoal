@@ -388,6 +388,34 @@ h1, h2, h3, h4 {
 .compact-item-place { color: var(--ink-2); font-size: 0.82rem; }
 .compact-item-period { color: var(--accent-1); font-size: 0.76rem; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
 
+/* linha do tempo: linha vertical + marcadores (desktop e mobile) */
+.compact-list { position: relative; padding-left: 1.35rem; }
+.compact-list::before {
+  content: "";
+  position: absolute;
+  left: 4px; top: 0.55rem; bottom: 0.55rem;
+  width: 1px;
+  background: var(--line-strong);
+}
+.compact-item { position: relative; }
+.compact-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.35rem + 0.5px);
+  top: 0.42rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--bg-0);
+  border: 1px solid var(--accent-1);
+  transition: box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+}
+.compact-list .compact-item:first-child::before {   /* item atual em destaque */
+  background: var(--accent-grad);
+  border-color: transparent;
+  box-shadow: 0 0 0 4px rgba(91, 141, 239, 0.15);
+}
+.compact-item:hover::before { box-shadow: 0 0 0 4px rgba(91, 141, 239, 0.18); }
+
 /* =========================================================
    6b. CERTIFICAÇÕES — seção própria em destaque
 ========================================================= */
@@ -1014,4 +1042,22 @@ h1, h2, h3, h4 {
 @media (max-width: 400px) {
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { flex: 0 0 auto; width: 100%; }
+}
+
+
+/* =========================================================
+   DESKTOP/TABLET — divisória vertical entre Experiência e Formação
+   (no celular as colunas empilham e já usam divisor horizontal)
+========================================================= */
+@media (min-width: 701px) {
+  .compact-panel-grid > div + div { position: relative; }
+  .compact-panel-grid > div + div::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: calc(var(--space-4) / -2);   /* no meio do espaço entre as colunas */
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
+    pointer-events: none;
+  }
 }
