@@ -87,11 +87,6 @@ const CONFIG = {
         title: "Técnico em Informática",
         place: "Senac São Paulo",
       },
-      {
-        period: "Concluído",
-        title: "Ensino Médio",
-        place: "",
-      },
     ],
     certifications: [
       { year: "2025", title: "Técnico em Informática", place: "Senac SP", hours: "1200h" },
