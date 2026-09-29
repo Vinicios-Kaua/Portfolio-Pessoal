@@ -973,3 +973,45 @@ h1, h2, h3, h4 {
   .compact-item-main { font-size: 1rem; line-height: 1.35; }
   .compact-item-place { font-size: 0.86rem; }
 }
+
+
+/* =========================================================
+   MOBILE/TABLET — hero: "Role para explorar" e botões
+   No celular o hero é mais alto que a tela, então a dica de rolagem
+   deixa de flutuar no rodapé (onde cobria os botões) e passa a
+   ficar no fluxo normal, logo abaixo do conteúdo.
+========================================================= */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding-bottom: var(--space-4);
+  }
+  .hero .container {
+    grid-template-columns: minmax(0, 1fr);   /* impede o conteúdo de vazar da coluna */
+    margin-block: auto;                        /* mantém o conteúdo centralizado */
+  }
+  .hero .container > * { min-width: 0; }
+  .hero-scroll-cue {
+    position: static;
+    transform: none;
+    margin: var(--space-4) auto 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-actions { width: 100%; }
+  .hero-actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 1rem;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* telas bem estreitas: botões empilhados, largura total */
+@media (max-width: 400px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { flex: 0 0 auto; width: 100%; }
+}
