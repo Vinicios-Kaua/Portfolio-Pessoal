@@ -304,12 +304,18 @@
 
       if (cover && typeof cover === "object" && cover.type === "video") {
         const poster = cover.poster ? ` poster="${cover.poster}"` : "";
+        // MP4 (H.264) primeiro: é o formato que o Safari/iOS reproduz de forma
+        // mais confiável. O WebM fica como alternativa para os demais navegadores.
         return `
-          <video class="media-shot media-cover-video" autoplay loop muted playsinline${poster}
+          <video class="media-shot media-cover-video" autoplay loop muted playsinline
+            preload="auto" disablepictureinpicture${poster}
             aria-label="Prévia animada do projeto ${p.title}">
-            ${cover.src ? `<source src="${cover.src}" type="video/webm">` : ""}
             ${cover.fallback ? `<source src="${cover.fallback}" type="video/mp4">` : ""}
-          </video>`;
+            ${cover.src ? `<source src="${cover.src}" type="video/webm">` : ""}
+          </video>
+          <button type="button" class="cover-play" aria-label="Reproduzir prévia animada" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>`;
       }
 
       const coverSrc = cover || (p.images && p.images[0] && p.images[0].src);
@@ -366,20 +372,90 @@
         dot.addEventListener("click", () => this.goTo(Number(dot.dataset.dot)));
       });
 
-      this.respectReducedMotion();
       this.update();
     },
 
-    // Projetos em desenvolvimento usam vídeo em loop como capa; quem
-    // prefere menos movimento (prefers-reduced-motion) vê só o poster
-    // parado, em vez do loop rodando.
-    respectReducedMotion() {
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      $$(".media-cover-video").forEach((video) => {
-        video.pause();
-        video.removeAttribute("autoplay");
-        video.removeAttribute("loop");
-      });
+    // Capa em vídeo (projetos em desenvolvimento).
+    // - Toca só quando o card está visível na tela.
+    // - Se o navegador bloquear o autoplay (Modo de Pouca Energia do iPhone,
+    //   "Reduzir Movimento" etc.), mostra um botão ▶ para o usuário iniciar.
+    initCoverVideos() {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const videos = $$(".media-cover-video");
+      if (!videos.length) return;
+
+      const setup = (video) => {
+        const btn = video.parentElement.querySelector(".cover-play");
+        video.muted = true;               // o iOS exige muted via propriedade também
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("webkit-playsinline", "");
+
+        const showBtn = (show) => { if (btn) btn.hidden = !show; };
+        const tryPlay = () => {
+          const pr = video.play();
+          if (pr && pr.catch) pr.then(() => showBtn(false)).catch(() => showBtn(true));
+        };
+
+        if (btn) {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();          // não abre o modal do projeto
+            video.loop = true;
+            video.play().then(() => showBtn(false)).catch(() => {});
+          });
+        }
+        video.addEventListener("playing", () => showBtn(false));
+
+        if (reduce.matches) {             // respeita a preferência: não inicia sozinho
+          video.pause();
+          video.removeAttribute("autoplay");
+          showBtn(true);
+          return;
+        }
+
+        this._coverVisible.set(video, false);
+        const io = new IntersectionObserver(([entry]) => {
+          this._coverVisible.set(video, entry.isIntersecting);
+          if (entry.isIntersecting) tryPlay();
+          else video.pause();
+        }, { threshold: 0.25 });
+        io.observe(video);
+
+        // primeira interação do usuário libera o autoplay bloqueado
+        const unlock = () => { if (this._coverVisible.get(video)) tryPlay(); };
+        ["touchstart", "pointerdown", "keydown"].forEach((ev) =>
+          window.addEventListener(ev, unlock, { once: true, passive: true })
+        );
+      };
+
+      this._coverVisible = new WeakMap();
+      videos.forEach(setup);
+    },
+
+    // A altura do carrossel acompanha o card mais alto (textos longos não
+    // estouram mais o card nem cobrem setas/pontos, no celular ou no desktop).
+    fitHeight() {
+      const viewport = $("#ring-viewport");
+      const cards = $$(".ring-card");
+      if (!viewport || !cards.length) return;
+      const tallest = Math.max(...cards.map((c) => c.offsetHeight));
+      // folga vertical para o efeito de escala/perspectiva
+      viewport.style.setProperty("--ring-h", `${Math.ceil(tallest + 48)}px`);
+    },
+
+    initFitHeight() {
+      this.fitHeight();
+      let raf = 0;
+      const schedule = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => this.fitHeight()); };
+      window.addEventListener("resize", schedule);
+      window.addEventListener("orientationchange", schedule);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+      if ("ResizeObserver" in window) {
+        const ro = new ResizeObserver(schedule);
+        $$(".ring-card").forEach((c) => ro.observe(c));
+      }
+      // imagens com lazy loading mudam a altura quando carregam
+      $$(".ring-card img").forEach((img) => img.addEventListener("load", schedule));
     },
 
     goTo(index) {
@@ -454,6 +530,8 @@
 
     init() {
       this.render();
+      this.initCoverVideos();
+      this.initFitHeight();
       this.initArrows();
       this.initSwipe();
       this.initKeyboard();

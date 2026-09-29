@@ -480,7 +480,8 @@ h1, h2, h3, h4 {
 }
 .ring-viewport {
   position: relative;
-  height: 460px;
+  height: var(--ring-h, 460px); /* calculado por JS: card mais alto + folga */
+  min-height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -542,6 +543,23 @@ h1, h2, h3, h4 {
   object-fit: cover;
   background: var(--bg-2);
 }
+/* --- botão ▶ exibido quando o autoplay é bloqueado (iOS pouca energia etc.) --- */
+.cover-play {
+  position: absolute;
+  z-index: 4;
+  right: 0.6rem; bottom: 0.6rem;
+  width: 44px; height: 44px;         /* alvo de toque confortável */
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(12, 14, 20, 0.75);
+  border: 1px solid var(--accent-1);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+.cover-play[hidden] { display: none; }
+.cover-play:hover { background: rgba(91, 141, 239, 0.25); transform: scale(1.06); }
+.cover-play svg { width: 18px; height: 18px; fill: var(--ink-0); margin-left: 2px; }
 /* --- selo "Em desenvolvimento", exibido no card e no modal --- */
 .status-badge {
   position: absolute;
@@ -563,7 +581,7 @@ h1, h2, h3, h4 {
   display: inline-block;
   vertical-align: middle;
 }
-.ring-card-body { padding: var(--space-3); }
+.ring-card-body { padding: var(--space-3); min-width: 0; }
 .ring-card-category-row {
   display: flex;
   align-items: center;
@@ -574,8 +592,8 @@ h1, h2, h3, h4 {
 }
 .ring-card-category-row .ring-card-category { margin-bottom: 0; }
 .ring-card-category { font-size: 0.75rem; color: var(--accent-1); font-weight: 600; margin-bottom: 0.3rem; }
-.ring-card-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink-0); margin-bottom: 0.4rem; }
-.ring-card-desc { font-size: 0.85rem; color: var(--ink-2); margin-bottom: var(--space-2); }
+.ring-card-title { font-family: var(--font-display); font-size: clamp(1.05rem, 4.2vw, 1.15rem); color: var(--ink-0); margin-bottom: 0.4rem; overflow-wrap: anywhere; }
+.ring-card-desc { font-size: 0.85rem; color: var(--ink-2); margin-bottom: var(--space-2); overflow-wrap: anywhere; }
 .ring-card-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tech-pill {
   font-size: 0.72rem;
@@ -862,7 +880,6 @@ h1, h2, h3, h4 {
   .hero-title { font-size: 2.1rem; }
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
   .modal-features { grid-template-columns: 1fr; }
-  .ring-viewport { height: 400px; }
   .ring-card { width: 280px; }
   .footer-grid { flex-direction: column; align-items: flex-start; }
   .contact-panel { border-radius: var(--radius-m); }
@@ -870,5 +887,4 @@ h1, h2, h3, h4 {
 
 @media (max-width: 380px) {
   .ring-card { width: 250px; }
-  .ring-viewport { height: 380px; }
 }
