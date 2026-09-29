@@ -150,7 +150,7 @@ const CONFIG = {
   contact: {
     title: "Vamos conversar",
     subtitle:
-      "Aberto a oportunidades em desenvolvimento web e suporte de TI. Envie uma mensagem — respondo rápido.",
+      "Aberto a oportunidades em desenvolvimento web e suporte de TI. Envie uma mensagem para conversamos.",
     email: "vini12kaua@hotmail.com",
     phoneDisplay: "(11) 97065-6550",
     whatsappNumber: "5511970656550", // formato internacional, usado no link do WhatsApp
