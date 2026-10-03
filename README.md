@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <img width="100%" src="docs/preview.gif.mp4" alt="Demonstração rolando a Home do portfólio" />
+  <video src="https://github.com/user-attachments/assets/a8f5dc31-7f39-405d-836e-d750dbdd8b10" controls width="100%"></video>
 </p>
 
 <br>
@@ -92,7 +92,7 @@ Todo o conteúdo (textos, contatos, estatísticas, habilidades, timeline e proje
 ## 🚀 Como rodar localmente
 
 ```bash
-git clone https://github.com/Vinicios-Kaua/portfolio.git
+git clone https://github.com/Vinicios-Kaua/Portfólio-Pessoal.git
 cd portfolio
 npm install      # apenas na primeira vez
 npm start        # abre automaticamente em http://localhost:5500
