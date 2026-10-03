@@ -93,7 +93,7 @@ Todo o conteúdo (textos, contatos, estatísticas, habilidades, timeline e proje
 
 ```bash
 git clone https://github.com/Vinicios-Kaua/Portfólio-Pessoal.git
-cd portfolio
+cd Portfólio-Pessoal
 npm install      # apenas na primeira vez
 npm start        # abre automaticamente em http://localhost:5500
 ```
