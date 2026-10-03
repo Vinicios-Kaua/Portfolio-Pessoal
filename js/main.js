@@ -546,7 +546,7 @@
     currentProject: null,
     lastFocused: null,
 
-    open(project) {
+    open(project, { fromHash = false } = {}) {
       this.currentProject = project;
       this.galleryIndex = 0;
       this.lastFocused = document.activeElement;
@@ -596,6 +596,13 @@
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       $(".modal-close", modal).focus();
+
+      // Link direto: #projeto/<slug>. Só empilha no histórico se veio de um clique
+      // (se veio da própria URL, ela já está correta).
+      if (!fromHash) {
+        const target = ProjectRoute.hashFor(project);
+        if (location.hash !== target) history.pushState({ projectModal: true }, "", target);
+      }
     },
 
     ensureCaptionEl() {
@@ -676,12 +683,22 @@
       this.renderGallery("prev");
     },
 
-    close() {
+    close({ fromHistory = false } = {}) {
       const modal = $("#project-modal");
+      const wasOpen = modal.classList.contains("is-open");
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+      this.currentProject = null;
       if (this.lastFocused) this.lastFocused.focus();
+
+      // Fecha pelo X/ESC/fundo: limpa o #projeto/... da URL.
+      // Se o modal foi aberto por clique, volta no histórico (o botão "voltar"
+      // do navegador fica coerente); se veio de link direto, só troca a URL.
+      if (wasOpen && !fromHistory && ProjectRoute.isProjectHash(location.hash)) {
+        if (history.state && history.state.projectModal) history.back();
+        else history.replaceState(null, "", location.pathname + location.search + "#projetos");
+      }
     },
 
     initEvents() {
@@ -719,6 +736,61 @@
   };
 
   /* =========================================================
+     LINK DIRETO PARA PROJETOS  (#projeto/<slug>)
+     Ex.: https://SEU-SITE.vercel.app/#projeto/stkf
+  ========================================================= */
+  const ProjectRoute = {
+    prefix: "#projeto/",
+
+    slugOf(project) {
+      return project.slug || project.id;
+    },
+    hashFor(project) {
+      return this.prefix + encodeURIComponent(this.slugOf(project));
+    },
+    isProjectHash(hash) {
+      return typeof hash === "string" && hash.startsWith(this.prefix);
+    },
+    find(hash) {
+      if (!this.isProjectHash(hash)) return null;
+      let slug = hash.slice(this.prefix.length);
+      try { slug = decodeURIComponent(slug); } catch (_) { /* mantém o texto cru */ }
+      slug = slug.toLowerCase();
+      const idx = PROJECTS.findIndex((p) => this.slugOf(p).toLowerCase() === slug);
+      return idx === -1 ? null : { project: PROJECTS[idx], index: idx };
+    },
+
+    // Deixa o modal igual ao que a URL pede (idempotente: pode rodar várias vezes)
+    sync({ initial = false } = {}) {
+      const found = this.find(location.hash);
+
+      if (found) {
+        if (ProjectModal.currentProject === found.project) return;
+        RingCarousel.goTo(found.index);
+        if (initial) {
+          const section = document.getElementById("projetos");
+          if (section) section.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+        ProjectModal.open(found.project, { fromHash: true });
+        return;
+      }
+
+      // URL sem projeto (ou slug inválido): fecha o modal se estiver aberto
+      if (ProjectModal.currentProject) ProjectModal.close({ fromHistory: true });
+      if (this.isProjectHash(location.hash)) {
+        // slug inexistente: limpa a URL e leva para a seção de projetos
+        history.replaceState(null, "", location.pathname + location.search + "#projetos");
+      }
+    },
+
+    init() {
+      window.addEventListener("popstate", () => this.sync());
+      window.addEventListener("hashchange", () => this.sync());
+      this.sync({ initial: true });
+    },
+  };
+
+  /* =========================================================
      INIT
   ========================================================= */
   document.addEventListener("DOMContentLoaded", () => {
@@ -739,6 +811,7 @@
 
     RingCarousel.init();
     ProjectModal.initEvents();
+    ProjectRoute.init();
 
     initReveal();
   });

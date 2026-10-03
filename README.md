@@ -23,11 +23,9 @@
   <a href="#-contato">Contato</a>
 </p>
 
-<!--
-  Dica: quando o site estiver publicado, troque este comentário por um
-  screenshot ou GIF da Home, por exemplo:
-  <img width="100%" src="docs/preview.png" alt="Preview do portfólio" />
--->
+<p align="center">
+  <img width="100%" src="docs/preview.gif.mp4" alt="Demonstração rolando a Home do portfólio" />
+</p>
 
 <br>
 

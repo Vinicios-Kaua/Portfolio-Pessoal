@@ -29,6 +29,12 @@
  *      O vídeo toca em loop, mudo e automaticamente (autoplay
  *      + muted + playsinline), sem precisar de nenhum JS extra.
  *
+ * "slug" (recomendado): nome curto usado no link direto do projeto.
+ * O link fica: https://SEU-SITE.vercel.app/#projeto/<slug>
+ * e abre o portfólio já com o modal desse projeto aberto (use no
+ * README do GitHub, LinkedIn, currículo etc.). Use só letras
+ * minúsculas, números e hífen. Se omitido, o "id" é usado.
+ *
  * "status" (opcional): defina como "em-desenvolvimento" para
  * exibir o selo "Em desenvolvimento" no card e no modal.
  * Omita o campo (ou remova) quando o projeto estiver concluído.
@@ -72,6 +78,7 @@
 const PROJECTS = [
   {
     id: "kion-requisition",
+    slug: "kion-requisition",
     title: "Kion Requisition",
     category: "Sistema Interno (PWA)",
     cover: "assets/images/projects/kion-requisition/capa-kion-requisition.png",
@@ -115,6 +122,7 @@ const PROJECTS = [
   },
   {
     id: "agendamento",
+    slug: "agendamento-eucatex",
     title: "Sistema de Agendamento De Exames Admissionais — Eucatex",
     category: "Sistema Interno (web)",
     cover: "assets/images/projects/agendamento-eucatex/capa-agendamento-eucatex.png",
@@ -152,6 +160,7 @@ const PROJECTS = [
   },
   {
     id: "stkf",
+    slug: "stkf",
     title: "STKF — App para Fitas",
     category: "Sistema Web (PWA)",
     cover: "assets/images/projects/stkf/capa-stkf.png",
@@ -190,6 +199,7 @@ const PROJECTS = [
   },
   {
     id: "adega-smart",
+    slug: "adega-smart",
     title: "Adega Smart",
     category: "Sistema Web (PWA)",
     cover: "assets/images/projects/adega-smart/capa-adega-smart.png",
@@ -219,6 +229,7 @@ const PROJECTS = [
   },
   {
     id: "r46-studio",
+    slug: "r46-studio",
     title: "R46 Studio — Plataforma de Edição de Fotos e Vídeos",
     category: "Sistema Web (Full Stack)",
     status: "em-desenvolvimento",
