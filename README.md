@@ -1,4 +1,8 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:4e95ff&height=120&section=header&text=Portf%C3%B3lio%20%26%20Curr%C3%ADculo&fontSize=28&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Vinicios%20Kau%C3%A3%20-%20Site%20Est%C3%A1tico&descAlignY=55&descAlign=50"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:4e95ff&height=160&section=header"/>
+
+<h1 align="center">Portfólio & Currículo</h1>
+
+[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=22&pause=1000&color=4E95FF&center=true&vCenter=true&width=500&lines=Vinicios+Kau%C3%A3+%E2%80%94+Site+Est%C3%A1tico)](https://git.io/typing-svg)
 
 <div align="center">
 
