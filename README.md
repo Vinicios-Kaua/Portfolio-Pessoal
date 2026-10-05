@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/badge/-HTML5-0D1117?style=flat-square&logo=html5&logoColor=E34F26"/>
 <img src="https://img.shields.io/badge/-CSS3-0D1117?style=flat-square&logo=css3&logoColor=white"/>
 <img src="https://img.shields.io/badge/-JavaScript-0D1117?style=flat-square&logo=javascript&logoColor=F7DF1E"/>
-<img src="https://img.shields.io/github/last-commit/Vinicios-Kaua/portfolio?style=flat-square&color=4e95ff&labelColor=0D1117"/>
+<img src="https://img.shields.io/github/last-commit/Vinicios-Kaua/Portfolio-Pessoal?style=flat-square&color=4e95ff&labelColor=0D1117"/>
 <img src="https://img.shields.io/badge/status-em%20produ%C3%A7%C3%A3o-4e95ff?style=flat-square&labelColor=0D1117"/>
 
 </div>
@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/23add22e-d9c2-4cf6-9922-49d7032f0b88" controls width="100%"></video>
+  <img width="100%" src="docs/preview.gif" alt="Demonstração rolando a Home do portfólio" />
 </p>
 
 <br>
@@ -92,8 +92,8 @@ Todo o conteúdo (textos, contatos, estatísticas, habilidades, timeline e proje
 ## 🚀 Como rodar localmente
 
 ```bash
-git clone https://github.com/Vinicios-Kaua/Portfólio-Pessoal.git
-cd Portfólio-Pessoal
+git clone https://github.com/Vinicios-Kaua/Portfolio-Pessoal.git
+cd Portfolio-Pessoal
 npm install      # apenas na primeira vez
 npm start        # abre automaticamente em http://localhost:5500
 ```
