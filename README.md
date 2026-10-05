@@ -1,4 +1,4 @@
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:4e95ff&height=161&section=header&text=Portf%C3%B3lio%20%26%20Curr%C3%ADculo&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=42&desc=Vinicios%20Kau%C3%A3%20%E2%80%94%20Site%20Est%C3%A1tico&descAlignY=62&descAlign=50"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:4e95ff&height=120&section=footer"/>
 
 <div align="center">
 
