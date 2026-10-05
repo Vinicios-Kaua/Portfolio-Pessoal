@@ -2,7 +2,11 @@
 
 <h1 align="center">Portfólio & Currículo</h1>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=22&pause=1000&color=4E95FF&center=true&vCenter=true&width=500&lines=Vinicios+Kau%C3%A3+%E2%80%94+Site+Est%C3%A1tico)](https://git.io/typing-svg)
+<p align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=22&pause=1000&color=4E95FF&center=true&vCenter=true&width=500&lines=Vinicios+Kau%C3%A3+%E2%80%94+Site+Est%C3%A1tico" alt="Typing SVG"/>
+  </a>
+</p>
 
 <div align="center">
 
